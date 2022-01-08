@@ -1,0 +1,53 @@
+<html>
+   <head>
+      <title>VueJs Instance</title>
+      <script type = "text/javascript" src = "js/vue.js"></script>
+   </head>
+   <body>
+      <style>
+         .fade-enter-active, .fade-leave-active {
+            transition: opacity 2s
+         }
+         .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+            opacity: 0
+         }
+         .shiftx-enter-active, .shiftx-leave-active {
+            transition: all 2s ease-in-out;
+         }
+         .shiftx-enter, .shiftx-leave-to /* .fade-leave-active below version 2.1.8 */ {
+            transform :  translateX(100px);
+         }
+      </style>
+      <div id = "databinding">
+         <button v-on:click = "show = !show">Click Me</button>
+         <transition name = "fade">
+            <p v-show = "show" v-bind:style = "styleobj">Animation Example</p>
+         </transition>
+
+         <div>
+            <button v-on:click = "show1 = !show1">Click Me</button>
+            <transition name = "shiftx">
+               <p v-show = "show1">
+                  <img src = "image/img.png" style = "width:100px;height:100px;" />
+               </p>
+            </transition>
+         </div>
+      </div>
+      <script type = "text/javascript">
+         var vm = new Vue({
+            el: '#databinding',
+            data: {
+               show:true,
+               styleobj :{
+                  fontSize:'30px',
+                  color:'red'
+               },
+               show1:true
+            },
+            methods : {
+            }
+         });
+
+      </script>
+   </body>
+</html>

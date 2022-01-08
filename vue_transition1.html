@@ -1,0 +1,52 @@
+<html>
+   <head>
+      <title>VueJs Instance</title>
+      <link href = "https://cdn.jsdelivr.net/npm/animate.css@3.5.1" rel = "stylesheet" type = "text/css">
+      <script type = "text/javascript" src = "js/vue.js"></script>
+   </head>
+   <body>
+      <style>
+         .shiftx-enter-active {
+            animation: shift-in 2s;
+         }
+         .shiftx-leave-active {
+            animation: shift-in 2s reverse;
+         }
+         @keyframes shift-in {
+            0%   {transform:rotateX(0deg);}
+            25%  {transform:rotateX(90deg);}
+            50%  {transform:rotateX(120deg);}
+            75%  {transform:rotateX(180deg);}
+            100% {transform:rotateX(360deg);}
+         }
+      </style>
+      <div id = "databinding">
+         <button v-on:click = "show = !show">Click Me</button>
+         <transition name = "shiftx">
+            <p v-show = "show">
+               <img src = "image/img.png" style = "width:100px;height:100px;" />
+            </p>
+         </transition>
+         <div style = "text-align:center">
+            <button @click = "show1 = !show1"><span style = "font-size:25px;">Animate</span></button>
+            <transition
+               name = "custom-classes-transition"
+               enter-active-class = "animated swing"
+               leave-active-class = "animated bounceIn">
+               <p v-if = "show1"><span style = "font-size:25px;">Example</span></p>
+            </transition>
+         </div>
+      </div>
+      <script type = "text/javascript">
+         var vm = new Vue({
+            el: '#databinding',
+            data: {
+               show:true,
+               show1:true
+            },
+            methods : {
+            }
+         });
+      </script>
+   </body>
+</html>
